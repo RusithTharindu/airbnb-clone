@@ -106,7 +106,7 @@ const Modal: React.FC<ModalProps> = ({
                             {/* Footer */}
                             <div className='flex flex-col gap-2 p-6 '>
                                 <div className='flex flex-row items-center gap-4 w-full'>
-                                    <Button label='MyButton'/>
+                                    {/* <Button label='MyButton'/> */}
                                 </div>
                             </div>
                         </div>
