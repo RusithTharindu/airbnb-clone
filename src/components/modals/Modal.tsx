@@ -13,7 +13,7 @@ interface ModalProps {
     actionLabel: string;  // Required label for the action button
     disabled?: boolean;  // Optional prop to disable the action button
     secondaryAction?: () => void;  // Optional secondary action function
-    secondaryLabel?: string;  // Optional label for the secondary action button
+    secondaryActionLabel?: string;  // Optional label for the secondary action button
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({
     actionLabel,
     disabled = false,
     secondaryAction,
-    secondaryLabel,
+    secondaryActionLabel,
 }) => {
 
     const [showModal, setShowModal] = useState(isOpen); //initial state of showModal is set based on the value of the isOpen prop when the component is first rendered
@@ -106,7 +106,20 @@ const Modal: React.FC<ModalProps> = ({
                             {/* Footer */}
                             <div className='flex flex-col gap-2 p-6 '>
                                 <div className='flex flex-row items-center gap-4 w-full'>
-                                    {/* <Button label='MyButton'/> */}
+                                    {secondaryAction && secondaryActionLabel && (
+                                        <Button 
+                                            outline
+                                            disabled={disabled}
+                                            label={secondaryActionLabel}
+                                            onClick={handleSecondaryAction}
+                                    />
+                                    )}
+                                    
+                                    <Button 
+                                        disabled={disabled}
+                                        label={actionLabel}
+                                        onClick={handleSubmit}
+                                    />
                                 </div>
                             </div>
                         </div>
