@@ -14,6 +14,7 @@ import { useFormState } from 'react-dom';
 import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/input';
+import toast from 'react-hot-toast';
 
 
 const RegisterModal = () => {
@@ -42,7 +43,7 @@ const RegisterModal = () => {
             registerModal.onClose();
         })
         .catch((error) => {
-            console.log(error);
+            toast.error('Something Went Wrong');
         })
         .finally(() => {
             setIsLoading(false);
@@ -58,6 +59,22 @@ const RegisterModal = () => {
             <Input 
                 id='email'
                 label='Email'
+                required
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+            />
+            <Input 
+                id='name'
+                label='Name'
+                required
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+            />
+            <Input 
+                id='password'
+                label='Password'
                 required
                 disabled={isLoading}
                 register={register}
